@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4d7crhgc4osm"]
+
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_fewb2"]
+[ext_resource type="PackedScene" uid="uid://rvq3e32vartu" path="res://scenes/board.tscn" id="1_vpoit"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_njedf"]
+font_color = Color(0.820989, 0.136395, 0.241502, 1)
+outline_size = 5
+outline_color = Color(0.0687983, 0.0687983, 0.0687983, 1)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_fewb2")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 500.0
+offset_bottom = 500.0
+color = Color(0.442911, 0.442911, 0.442911, 1)
+
+[node name="Board" parent="." instance=ExtResource("1_vpoit")]
+position = Vector2(125, 125)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="StartLabel" type="Label" parent="CanvasLayer"]
+offset_left = 169.0
+offset_top = 425.0
+offset_right = 324.0
+offset_bottom = 448.0
+text = "Press Enter to Begin"
+horizontal_alignment = 1
+
+[node name="PointsLabel" type="Label" parent="CanvasLayer"]
+offset_top = 77.0
+offset_right = 500.0
+offset_bottom = 100.0
+text = "Score: 0"
+horizontal_alignment = 1
+
+[node name="HighscoreLabel" type="Label" parent="CanvasLayer"]
+offset_top = 46.0
+offset_right = 500.0
+offset_bottom = 69.0
+text = "High Score: 0"
+horizontal_alignment = 1
+
+[node name="GameoverLabel" type="Label" parent="CanvasLayer"]
+visible = false
+offset_right = 500.0
+offset_bottom = 500.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_njedf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="add_points" from="Board" to="." method="_on_board_add_points"]
+[connection signal="game_over" from="Board" to="." method="_on_board_game_over"]

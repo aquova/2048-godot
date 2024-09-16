@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5x0uoagp1wnc"]
+
+[ext_resource type="Script" path="res://scripts/tile.gd" id="1_64oef"]
+
+[node name="Tile" type="Node2D"]
+script = ExtResource("1_64oef")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 50.0
+offset_bottom = 50.0
+color = Color(0.188235, 0.427451, 0.929412, 1)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 50.0
+offset_bottom = 50.0
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1
